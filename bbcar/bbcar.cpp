@@ -28,7 +28,6 @@ void BBCar::goStraight( double speed ){
     servo1.set_speed(-speed);
 }
 
-
 /*	speed : speed value of servo
     factor: control the speed value with 0~1
             control left/right turn with +/-
@@ -71,6 +70,14 @@ void BBCar::rotateCertainDistance(float distance){
     //servo0.targetAngle = (int)(distance*360/(6.5*3.14)) + servo0.angle;
     servo0.targetAngle = (int)(distance*360/(6.5*3.14)) + servo0.angle;
 }
+
+void BBCar::rotate(double speed){
+    servo0.set_factor(1);
+    servo1.set_factor(1.05);
+    servo0.set_speed(speed);
+    servo1.set_speed(speed);
+}
+
 
 int BBCar::checkRotateDistance(float errorDistance_Range){
     int speed, offset;                                                              // Control system variables
